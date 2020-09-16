@@ -8,8 +8,8 @@ class Author(models.Model):
         return self.name
 
 class Book(models.Model):
-    title: models.CharField(max_length=40)
-    author: models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
+    title= models.CharField(max_length=40, null=True)
+    author= models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.name
+        return self.title

@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
+from library_app.models import Book
 
 books = [
     { 'id': 1, 'title': 'Life, the Universe and Everything', 'author': 'Douglas Adams'},
@@ -10,12 +11,11 @@ books = [
 ]
 
 def index(req):
-    # return HttpResponse("<h1>Test View<h1>")
-    context = {'books': books}
+    context = {'books': Book.objects.all()}
     return render(req, 'library_app/index.html', context )
 
 def show(req, id):
-    context = {'book': books[id-1]}
+    context = {'book': Book.objects.get(pk=id)}
     return render(req, 'library_app/show.html', context )
 
 def not_found_404(req, exception):
