@@ -17,3 +17,10 @@ def index(req):
 def show(req, id):
     context = {'book': books[id-1]}
     return render(req, 'library_app/show.html', context )
+
+def not_found_404(req, exception):
+    return render(req, 'library_app/error404.html')
+
+def server_error_500(req, exception):
+    return render(req, 'library_app/error404.html')
+    

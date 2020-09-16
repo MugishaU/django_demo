@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('library_app.urls'))
-    
+    path('', include('library_app.urls'))    
 ]
+
+handler404 = 'library_app.views.not_found_404'
