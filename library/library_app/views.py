@@ -13,3 +13,7 @@ def index(req):
     # return HttpResponse("<h1>Test View<h1>")
     context = {'books': books}
     return render(req, 'library_app/index.html', context )
+
+def show(req, id):
+    context = {'book': books[id-1]}
+    return render(req, 'library_app/show.html', context )

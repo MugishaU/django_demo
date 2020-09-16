@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='library_app.idx')
+    path('', views.index, name='library_app.index'),
+    path('<int:id>/', views.show, name='library_app.show')
 ]
