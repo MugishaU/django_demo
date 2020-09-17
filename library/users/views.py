@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-form django.contrib import messages
-from forms import UserSignupForm
+from django.contrib import messages
+from .forms import UserSignupForm
 
 # Create your views here.
-def register(req):
+def signup(req):
     if req.method == 'POST':
         form = UserSignupForm(req.POST)
         if form.is_valid():
@@ -11,7 +11,7 @@ def register(req):
             username = form.cleaned_data.get('username')
             messages.success(req, f'Welcome to the library, {username}!')
             return redirect('library_app.index')
-        else:
+    else:
             form = UserSignupForm()
-            data = {'form': form}
-            return render(req, 'users/signup.html', data) #CHECK CHECK CHECK
+    data = {'form': form}
+    return render(req, 'users/signup.html', data) #CHECK CHECK CHECK
