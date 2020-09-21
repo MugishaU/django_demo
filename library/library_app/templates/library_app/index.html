@@ -9,13 +9,45 @@
     <nav>
       <a href="{%url 'logout'%}">Logout</a>
     </nav>
-    <h1>Welcome to the Library</h1>
-    <ol>
-      {% for book in books %}
-      <a href="{% url 'library_app.show' id=book.id %}"
-        ><li>{{ book.title }}</li></a
-      >
-      {% endfor %}
-    </ol>
+    <h1>Welcome to the Library, {{user.username}}</h1>
+    
+    <h3>Your Books</h3>
+    {% for book in books %}
+    {%if book.borrower == user %}
+    <ul>
+      <a href="{% url 'library_app.show' id=book.id %}">
+        <h3>Title: {{book.title}}</h3>
+      </a>
+    </ul>
+  
+    {%endif%}
+    {% endfor %}
+
+    <h3>Available Books</h3>
+    {% for book in books %}
+    {%if book.borrower is null%}
+    <ul>
+      <a href="{% url 'library_app.show' id=book.id %}">
+        <li>Title: {{book.title}}</li>
+      </a>
+    </ul>
+
+    {%endif%}
+    {% endfor %}
+
+    <h3>Unavailable Books</h3>
+    {% for book in books %}
+    {%if book.borrower is not null and book.borrower != user %}
+    <ul>
+      <a href="{% url 'library_app.show' id=book.id %}">
+        <li>Title: {{book.title}}</li>
+      </a>
+    </ul>
+
+    {%endif%}
+    {% endfor %}
+    
+    
+    
   </body>
 </html>
