@@ -30,12 +30,13 @@
       <a href="{% url 'library_app.show' id=book.id %}">
         <li>Title: {{book.title}}</li>
       </a>
+      <button>Borrow</button>
     </ul>
 
     {%endif%}
     {% endfor %}
 
-    <h3>Unavailable Books</h3>
+    <h3>Books on Loan</h3>
     {% for book in books %}
     {%if book.borrower is not null and book.borrower != user %}
     <ul>
