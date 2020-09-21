@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Django Library App</title>
-</head>
-<body>
+  </head>
+  <body>
+    <nav>
+      <a href="{%url 'logout'%}">Logout</a>
+    </nav>
     <h1>Welcome to the Library</h1>
     <ol>
-        {% for book in books %} 
-            <a href="{% url 'library_app.show' id=book.id %}"><li>{{ book.title }}</li></a>
-        {% endfor %}
+      {% for book in books %}
+      <a href="{% url 'library_app.show' id=book.id %}"
+        ><li>{{ book.title }}</li></a
+      >
+      {% endfor %}
     </ol>
-
-    
-</body>
+  </body>
 </html>

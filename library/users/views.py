@@ -14,4 +14,4 @@ def signup(req):
     else:
             form = UserSignupForm()
     data = {'form': form}
-    return render(req, 'users/signup.html', data) #CHECK CHECK CHECK
+    return render(req, 'users/signup.html', data)
